@@ -14,7 +14,7 @@
 
 ## Description
 
-[Nest] INstalacion de imagen de dynamo db on .
+[DynamoDb] Instalacion de imagen de dynamo db on Docker.
 
 ## Installation
 
@@ -22,14 +22,20 @@
 $ Docker compose up
 ```
 <p>Despues de instalar aws cli, ejecutar el siguiente comando</p>
-## Running the app
+
+## Cargar estructura de datos
 ```bash
 $ aws configure
 
+```
+<p>Poner la informacion que se encuentra en el archivo .env, segun corresponde ....</p>
 
-<p>Poner la informacion que se encuentra en el archivo .env, segun corresponde ....
-# production mode
-$ npm run start:prod
+## Cargar estructura de datos
+$ aws dynamodb --endpoint-url http://dynamodb:8000 list-tables
+$ aws dynamodb --endpoint-url http://dynamodb:8000 create-table   --table-name restaurant       --attribute-definitions AttributeName=name,AttributeType=S AttributeName=plate,AttributeType=S --key-schema AttributeName=name,KeyType=HASH AttributeName=plate,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --table-class STANDARD 
+$ aws dynamodb --endpoint-url http://dynamodb:8000 create-table   --table-name user_preferences --attribute-definitions AttributeName=name_user,AttributeType=S AttributeName=preferences,AttributeType=S --key-schema AttributeName=name_user,KeyType=HASH AttributeName=preferences,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --table-class STANDARD
+aws dynamodb --endpoint-url http://dynamodb:8000 list-tables
+
 ```
 
 ## Test
