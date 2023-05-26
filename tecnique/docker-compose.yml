@@ -16,10 +16,11 @@ services:
   dynamodb:
     image: amazon/dynamodb-local:latest
     container_name: dynamodb
-    command: '-jar DynamoDBLocal.jar -sharedDb -dbPath .'
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ."
     environment:
-      - "AWS_ACCESS_KEY_ID=root"
-      - "AWS_SECRET_ACCESS_KEY=root"
+      - "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}"
+      - "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
+      - "AWS_DEFAULT_REGION=${DYNAMODB_REGION}"
     networks:
       - app-network
     ports:
