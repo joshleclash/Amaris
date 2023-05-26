@@ -12,11 +12,11 @@
   </ul>  
   En esta ultima accion el back-end le enviara el nombre de restaurante con las preferencias de Comida que el usuario previamente registro y que corresponde a los platos que sirve cada restaurante, Entregando nombre del restaurante y la cantidad de conincidencias en platos que corresponde para el usuario registrado
 
-## Description
+## Descripcion
 
 [DynamoDb] Instalacion de imagen de dynamo db on Docker y la app ne NESTJS 
 
-## Installation
+## Instalación
 
 ```bash
 $ Docker compose up
@@ -28,7 +28,7 @@ $ Docker compose up
 $ aws configure
 
 ```
-<p>Poner la informacion que se encuentra en el archivo .env, segun corresponde ....</p>
+<p>Poner la informacion que se encuentra en el archivo .env, segun corresponde .... De ser necesario cambiar dynamodb por localhost</p>
 
 ## Cargar estructura de datos
 ```bash
@@ -38,6 +38,7 @@ $ aws dynamodb --endpoint-url http://dynamodb:8000 create-table   --table-name u
 aws dynamodb --endpoint-url http://dynamodb:8000 list-tables
 
 ```
+
 <h5>WELL DONE</h5>
 Revisar la documentacion del endpoint, publicada en http://localhost:3000
 
