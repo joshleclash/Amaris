@@ -31,26 +31,15 @@ $ aws configure
 <p>Poner la informacion que se encuentra en el archivo .env, segun corresponde ....</p>
 
 ## Cargar estructura de datos
+```bash
 $ aws dynamodb --endpoint-url http://dynamodb:8000 list-tables
 $ aws dynamodb --endpoint-url http://dynamodb:8000 create-table   --table-name restaurant       --attribute-definitions AttributeName=name,AttributeType=S AttributeName=plate,AttributeType=S --key-schema AttributeName=name,KeyType=HASH AttributeName=plate,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --table-class STANDARD 
 $ aws dynamodb --endpoint-url http://dynamodb:8000 create-table   --table-name user_preferences --attribute-definitions AttributeName=name_user,AttributeType=S AttributeName=preferences,AttributeType=S --key-schema AttributeName=name_user,KeyType=HASH AttributeName=preferences,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --table-class STANDARD
 aws dynamodb --endpoint-url http://dynamodb:8000 list-tables
 
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
+<h5>WELL DONE</h5>
+Revisar la documentacion del endpoint, publicada en http://localhost:3000
 
 
 
