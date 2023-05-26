@@ -1,0 +1,30 @@
+version: '2'
+services:
+  web:
+    build: .
+    container_name: nodejsapp
+    command: npm run start:dev
+    networks:
+      - app-network
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - dynamodb
+  dynamodb:
+    image: amazon/dynamodb-local:latest
+    container_name: dynamodb
+    command: '-jar DynamoDBLocal.jar -sharedDb -dbPath .'
+    environment:
+      - "AWS_ACCESS_KEY_ID=root"
+      - "AWS_SECRET_ACCESS_KEY=root"
+    networks:
+      - app-network
+    ports:
+      - "8000:8000"
+networks:
+  app-network:
+    external: false      
+

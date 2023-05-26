@@ -15,10 +15,17 @@ export class RestauranteService {
   private readonly docClient: DynamoDBClient;
   private readonly command: DynamoDBDocumentClient;
   constructor() {
-    this.docClient = new DynamoDBClient({ endpoint: 'http://localhost:8000' });
+    this.docClient = new DynamoDBClient({
+      endpoint: `${process.env.DYNAMODB}`,
+      region: `${process.env.DYNAMODB_REGION}`,
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      },
+    });
     this.command = DynamoDBDocumentClient.from(this.docClient);
   }
-  async create(item:any): Promise<any> {
+  async create(item: any): Promise<any> {
     try {
       const params: PutCommand = new PutCommand({
         TableName: this.tableName,
@@ -33,7 +40,9 @@ export class RestauranteService {
   }
   async getAll(): Promise<RestauranteCollection> {
     try {
-      const command: ScanCommand = new ScanCommand({ TableName: this.tableName });
+      const command: ScanCommand = new ScanCommand({
+        TableName: this.tableName,
+      });
       let data = await this.command.send(command);
       let model = data.Items.map((row) => {
         return new RestauranteModel({ name: row.name, plate: row.plate });
