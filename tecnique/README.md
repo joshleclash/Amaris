@@ -14,7 +14,7 @@
 
 ## Description
 
-[DynamoDb] Instalacion de imagen de dynamo db on Docker.
+[DynamoDb] Instalacion de imagen de dynamo db on Docker y la app ne NESTJS 
 
 ## Installation
 
